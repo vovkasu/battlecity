@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TankController : MonoBehaviour
 {
 
-    public Image View;
+    public SpriteRenderer View;
 
     public Sprite LeftDirection;
     public Sprite UpDirection;
