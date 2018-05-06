@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 167094095}
   - component: {fileID: 167094097}
   - component: {fileID: 167094096}
+  - component: {fileID: 167094098}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -378,6 +379,19 @@ Tilemap:
   m_TileRefreshArray:
   - serializedVersion: 1
     m_DirtyIndex: 0
+--- !u!19719996 &167094098
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 167094094}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
 --- !u!1 &247377244
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +443,7 @@ GameObject:
   - component: {fileID: 441498032}
   - component: {fileID: 441498034}
   - component: {fileID: 441498033}
+  - component: {fileID: 441498035}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -7829,6 +7844,19 @@ Tilemap:
     m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
+--- !u!19719996 &441498035
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 441498031}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
 --- !u!1 &946915402
 GameObject:
   m_ObjectHideFlags: 0
@@ -7839,6 +7867,8 @@ GameObject:
   - component: {fileID: 946915405}
   - component: {fileID: 946915404}
   - component: {fileID: 946915403}
+  - component: {fileID: 946915406}
+  - component: {fileID: 946915407}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -7862,7 +7892,7 @@ MonoBehaviour:
   UpDirection: {fileID: 21300000, guid: 4b2f909284ab3a04c8ac41b657572321, type: 3}
   RightDirection: {fileID: 21300000, guid: 435e98e2e86f04548a2d1dbf14fb5aef, type: 3}
   DownDirection: {fileID: 21300000, guid: 5d139e3eb0604eb4692796409b12fda6, type: 3}
-  Speed: 50
+  Speed: 2
 --- !u!212 &946915404
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7914,12 +7944,57 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 946915402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.13, y: -4.56, z: 0}
+  m_LocalPosition: {x: -3.04, y: 3.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &946915406
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 946915402}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.85, y: 0.56}
+    newSize: {x: 0.85, y: 0.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.85, y: 0.56}
+  m_EdgeRadius: 0
+--- !u!50 &946915407
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 946915402}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1185380024
 GameObject:
   m_ObjectHideFlags: 0
