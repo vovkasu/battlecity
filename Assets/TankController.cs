@@ -1,17 +1,14 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class TankController : MonoBehaviour
 {
 
     public SpriteRenderer View;
 
-    public Sprite LeftDirection;
-    public Sprite UpDirection;
-    public Sprite RightDirection;
-    public Sprite DownDirection;
+    public List<DirectionParams> Directions;
 
     public float Speed;
 
@@ -22,35 +19,26 @@ public class TankController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        Vector2 direction = Vector2.zero;
-	    Sprite sprite = null;
-	    if (Input.GetAxis("Vertical") > 0.5)
+	    DirectionParams currentDirection = null;
+
+        foreach (var directionParam in Directions)
 	    {
-            direction = Vector2.up;
-	        sprite = UpDirection;
-	    }
-        else if (Input.GetAxis("Vertical") < -0.5)
-	    {
-            direction = Vector2.down;
-            sprite = DownDirection;
-        }
-        else if (Input.GetAxis("Horizontal") > 0.5)
-        {
-            direction = Vector2.right;
-            sprite = RightDirection;
-        }
-        else if (Input.GetAxis("Horizontal") < -0.5)
-        {
-            direction = Vector2.left;
-            sprite = LeftDirection;
-        }
-	    if (sprite != null)
-	    {
-	        if (View.sprite != sprite)
+	        var axisValue = Input.GetAxis(directionParam.Axis.ToString());
+	        if (Mathf.Abs(axisValue) > Mathf.Abs(directionParam.AxisValue) &&
+	            Math.Sign(axisValue) == Math.Sign(directionParam.AxisValue))
 	        {
-	            View.sprite = sprite;
+	            currentDirection = directionParam;
+                break;
 	        }
-            transform.Translate(direction*Speed*Time.deltaTime);
+	    }
+
+	    if (currentDirection != null)
+	    {
+	        if (View.sprite != currentDirection.Sprite)
+	        {
+	            View.sprite = currentDirection.Sprite;
+	        }
+            transform.Translate(currentDirection.MoveDirection* Speed*Time.deltaTime);
 	    }
     }
 }
