@@ -7,9 +7,11 @@ public class Bullet : MonoBehaviour
     public SpriteRenderer View;
     public Animator ExplosionAnimation;
     public int Power;
+    public bool NeedMove;
 
     public void Fire(DirectionParams direction, int power)
     {
+        NeedMove = true;
         MoveDirection = direction.MoveDirection;
         View.transform.eulerAngles = new Vector3(0, 0, direction.BulletZRotation);
         transform.position = direction.BulletPosition.position;
@@ -18,13 +20,17 @@ public class Bullet : MonoBehaviour
 
     void Update ()
     {
-        transform.Translate(MoveDirection*Time.deltaTime*Speed);
+        if (NeedMove)
+        {
+            transform.Translate(MoveDirection*Time.deltaTime*Speed);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("OnCollisionEnter2D", other.gameObject);
         ExplosionAnimation.enabled = true;
+        NeedMove = false;
     }
 
     public void FinishExplosionAnimation()
