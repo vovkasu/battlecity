@@ -1413,7 +1413,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 377360729}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DownBulletSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: -982381405332843317, guid: 0000000000000000d000000000000000, type: 0}
@@ -8900,7 +8900,7 @@ GameObject:
   - component: {fileID: 946915403}
   - component: {fileID: 946915406}
   - component: {fileID: 946915407}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8926,7 +8926,7 @@ MonoBehaviour:
     Sprite: {fileID: 21300000, guid: f3a740be78e59e246880af518b1d0e9a, type: 3}
     MoveDirection: {x: -1, y: 0}
     BulletPosition: {fileID: 1182799053}
-    BulletZRotation: 0
+    BulletZRotation: -90
   - DirectionName: Up
     Axis: 0
     AxisValue: 0.5
@@ -8940,7 +8940,7 @@ MonoBehaviour:
     Sprite: {fileID: 21300000, guid: 435e98e2e86f04548a2d1dbf14fb5aef, type: 3}
     MoveDirection: {x: 1, y: 0}
     BulletPosition: {fileID: 1470154988}
-    BulletZRotation: 0
+    BulletZRotation: 90
   - DirectionName: Down
     Axis: 0
     AxisValue: -0.5
@@ -8948,7 +8948,18 @@ MonoBehaviour:
     MoveDirection: {x: 0, y: -1}
     BulletPosition: {fileID: 377360729}
     BulletZRotation: 0
+  LastDirection:
+    DirectionName: 
+    Axis: 0
+    AxisValue: 0
+    Sprite: {fileID: 0}
+    MoveDirection: {x: 0, y: 0}
+    BulletPosition: {fileID: 0}
+    BulletZRotation: 0
   Speed: 2
+  CurrentBullet: {fileID: 0}
+  BulletPrefab: {fileID: 114543720734455248, guid: 65e36eca9c07acc4a924dba785eb91e7,
+    type: 2}
 --- !u!212 &946915404
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9063,7 +9074,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1182799053}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftBulletSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: -982381405332843317, guid: 0000000000000000d000000000000000, type: 0}
@@ -9132,7 +9143,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1470154988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightBulletSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: -982381405332843317, guid: 0000000000000000d000000000000000, type: 0}
@@ -9240,7 +9251,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2101889596}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UpBulletSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: -982381405332843317, guid: 0000000000000000d000000000000000, type: 0}
