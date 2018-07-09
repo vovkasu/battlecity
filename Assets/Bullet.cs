@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
     public float Speed;
     public Vector2 MoveDirection;
     public SpriteRenderer View;
+    public Animator ExplosionAnimation;
     public int Power;
 
     public void Fire(DirectionParams direction, int power)
@@ -23,5 +24,11 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("OnCollisionEnter2D", other.gameObject);
+        ExplosionAnimation.enabled = true;
+    }
+
+    public void FinishExplosionAnimation()
+    {
+        Destroy(gameObject);
     }
 }
