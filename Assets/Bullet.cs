@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     public Animator ExplosionAnimation;
     public int Power;
     public bool NeedMove;
+    public BoxCollider2D BoxCollider2D;
+
 
     public void Fire(DirectionParams direction, int power)
     {
@@ -16,6 +18,7 @@ public class Bullet : MonoBehaviour
         View.transform.eulerAngles = new Vector3(0, 0, direction.BulletZRotation);
         transform.position = direction.BulletPosition.position;
         Power = power;
+        BoxCollider2D.size = direction.BulletColliderSize;
     }
 
     void Update ()

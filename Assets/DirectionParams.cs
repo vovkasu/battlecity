@@ -11,4 +11,5 @@ public class DirectionParams
     public Vector2 MoveDirection;
     public Transform BulletPosition;
     public float BulletZRotation;
+    public Vector2 BulletColliderSize;
 }

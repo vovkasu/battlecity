@@ -15,8 +15,8 @@ public class Wall : MonoBehaviour
             hitPosition.x = hit.point.x + 0.01f * hit.normal.x;
             hitPosition.y = hit.point.y + 0.01f * hit.normal.y;
             var cellPosition = Tilemap.WorldToCell(hitPosition);
+            Debug.Log(cellPosition);
             Tilemap.SetTile(cellPosition, null);
-            Tilemap.SetTile(new Vector3Int(cellPosition.x, cellPosition.y, cellPosition.z), null);
         }
 
     }

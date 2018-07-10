@@ -8940,6 +8940,7 @@ MonoBehaviour:
     MoveDirection: {x: -1, y: 0}
     BulletPosition: {fileID: 1182799053}
     BulletZRotation: -90
+    BulletColliderSize: {x: 0.5, y: 0.17}
   - DirectionName: Up
     Axis: 0
     AxisValue: 0.5
@@ -8947,6 +8948,7 @@ MonoBehaviour:
     MoveDirection: {x: 0, y: 1}
     BulletPosition: {fileID: 2101889596}
     BulletZRotation: 180
+    BulletColliderSize: {x: 0.7, y: 0.17}
   - DirectionName: Right
     Axis: 1
     AxisValue: 0.5
@@ -8954,6 +8956,7 @@ MonoBehaviour:
     MoveDirection: {x: 1, y: 0}
     BulletPosition: {fileID: 1470154988}
     BulletZRotation: 90
+    BulletColliderSize: {x: 0.5, y: 0.17}
   - DirectionName: Down
     Axis: 0
     AxisValue: -0.5
@@ -8961,6 +8964,7 @@ MonoBehaviour:
     MoveDirection: {x: 0, y: -1}
     BulletPosition: {fileID: 377360729}
     BulletZRotation: 0
+    BulletColliderSize: {x: 0.7, y: 0.17}
   LastDirection:
     DirectionName: 
     Axis: 0
@@ -8969,6 +8973,7 @@ MonoBehaviour:
     MoveDirection: {x: 0, y: 0}
     BulletPosition: {fileID: 0}
     BulletZRotation: 0
+    BulletColliderSize: {x: 0, y: 0}
   Speed: 2
   CurrentBullet: {fileID: 0}
   BulletPrefab: {fileID: 114543720734455248, guid: 65e36eca9c07acc4a924dba785eb91e7,
