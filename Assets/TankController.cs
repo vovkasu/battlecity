@@ -15,6 +15,10 @@ public class TankController : MonoBehaviour
     public Bullet CurrentBullet;
     public Bullet BulletPrefab;
 
+    public LayerMask ExploderMask;
+
+    public Animator ExplodingAnimator;
+
     public event EventHandler OnExplosion;
 
     // Use this for initialization
@@ -59,6 +63,19 @@ public class TankController : MonoBehaviour
         var bullet = Instantiate(BulletPrefab, transform.parent);
         bullet.Fire(LastDirection, 1);
         return bullet;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (IsInLayerMask(other.gameObject.layer,ExploderMask.value))
+        {
+            ExplodingAnimator.enabled = true;
+        }
+    }
+
+    public static bool IsInLayerMask(int layer, LayerMask layermask)
+    {
+        return layermask == (layermask | (1 << layer));
     }
 
     public void FinishExplosionAnimation()

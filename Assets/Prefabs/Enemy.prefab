@@ -153,7 +153,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1390835861893970}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.91, y: -4.17, z: 0}
+  m_LocalPosition: {x: -2.06, y: -1.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4321326091544248}
@@ -310,6 +310,10 @@ MonoBehaviour:
   CurrentBullet: {fileID: 0}
   BulletPrefab: {fileID: 114543720734455248, guid: 1a7252a5fec1e254e94681550e98d660,
     type: 2}
+  ExploderMask:
+    serializedVersion: 2
+    m_Bits: 256
+  ExplodingAnimator: {fileID: 95140754359623322}
 --- !u!212 &212243064275296172
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -310,6 +310,10 @@ MonoBehaviour:
   CurrentBullet: {fileID: 0}
   BulletPrefab: {fileID: 114543720734455248, guid: 65e36eca9c07acc4a924dba785eb91e7,
     type: 2}
+  ExploderMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  ExplodingAnimator: {fileID: 95140754359623322}
 --- !u!212 &212243064275296172
 SpriteRenderer:
   m_ObjectHideFlags: 1

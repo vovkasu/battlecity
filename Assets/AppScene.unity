@@ -9042,6 +9042,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tilemap: {fileID: 441498034}
+  ExploderMask:
+    serializedVersion: 2
+    m_Bits: 2304
 --- !u!1 &643627447
 GameObject:
   m_ObjectHideFlags: 0
