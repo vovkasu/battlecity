@@ -15,6 +15,8 @@ public class TankController : MonoBehaviour
     public Bullet CurrentBullet;
     public Bullet BulletPrefab;
 
+    public event EventHandler OnExplosion;
+
     // Use this for initialization
     void Start ()
     {
@@ -57,5 +59,14 @@ public class TankController : MonoBehaviour
         var bullet = Instantiate(BulletPrefab, transform.parent);
         bullet.Fire(LastDirection, 1);
         return bullet;
+    }
+
+    public void FinishExplosionAnimation()
+    {
+        Destroy(gameObject);
+        if (OnExplosion != null)
+        {
+            OnExplosion(this, null);
+        }
     }
 }
