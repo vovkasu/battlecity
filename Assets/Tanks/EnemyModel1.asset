@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dadcd6fa7f9a764bb2d5ef27142d69e, type: 3}
+  m_Name: EnemyModel1
+  m_EditorClassIdentifier: 
+  Speed: 2
+  BulletSpeed: 3
+  Views:
+  - Name: Left
+    Sprite: {fileID: 21300000, guid: d522fc3006445604fa3c6b9f5497f46c, type: 3}
+  - Name: Up
+    Sprite: {fileID: 21300000, guid: a8088d020213bcc458293a036cd994ea, type: 3}
+  - Name: Right
+    Sprite: {fileID: 21300000, guid: f7e0904b8d452f143a2f61ebc37b5b59, type: 3}
+  - Name: Down
+    Sprite: {fileID: 21300000, guid: d9353fc18c3f98342bc60bbc6fce4cf8, type: 3}
