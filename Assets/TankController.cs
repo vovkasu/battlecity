@@ -11,6 +11,7 @@ public class TankController : MonoBehaviour
     public DirectionParams LastDirection;
 
     public float Speed;
+    public float BulletSpeed;
 
     public Bullet CurrentBullet;
     public Bullet BulletPrefab;
@@ -28,7 +29,8 @@ public class TankController : MonoBehaviour
     }
 	
 	// Update is called once per frame
-	void Update () {
+    public virtual void Update ()
+    {
 	    DirectionParams currentDirection = null;
 
 	    if (Input.GetButtonDown("Fire1") && CurrentBullet == null)

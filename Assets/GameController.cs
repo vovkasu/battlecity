@@ -9,6 +9,9 @@ public class GameController : MonoBehaviour
     public TankController TankControllerPrefab;
     public Eagle Eagle;
     public Transform GameRooTransform;
+    public EnemyFactory EnemyFactory;
+
+    public LevelModel Level;
 
     private void Start()
     {
@@ -20,10 +23,13 @@ public class GameController : MonoBehaviour
 
         Eagle.OnDie += GameOver;
         tankController.OnExplosion += GameOver;
+
+        EnemyFactory.Run(Level);
     }
 
     private void GameOver(object sender, EventArgs eventArgs)
     {
+        EnemyFactory.Stop();
         StartCoroutine(RestartLevel());
     }
 

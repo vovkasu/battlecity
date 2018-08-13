@@ -6,4 +6,5 @@ using UnityEngine;
 public class LevelModel : ScriptableObject
 {
     public List<EnemyModel> Enemies = new List<EnemyModel>();
+    public float Period = 3f;
 }

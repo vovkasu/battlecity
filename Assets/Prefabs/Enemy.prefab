@@ -260,7 +260,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1390835861893970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbda45e019a32b843a93fac5294e2d1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 72446a74d3f4d1f4ab483bd72d5b6e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   View: {fileID: 212493690354438036}
@@ -307,6 +307,7 @@ MonoBehaviour:
     BulletZRotation: 0
     BulletColliderSize: {x: 0, y: 0}
   Speed: 2
+  BulletSpeed: 0
   CurrentBullet: {fileID: 0}
   BulletPrefab: {fileID: 114543720734455248, guid: 1a7252a5fec1e254e94681550e98d660,
     type: 2}
