@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcc5b9dfbdce794a90f35d6b7ab8374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
+  Speed: 3
   MoveDirection: {x: 0, y: 0}
   View: {fileID: 212647422488520756}
   ExplosionAnimation: {fileID: 95423509357637354}

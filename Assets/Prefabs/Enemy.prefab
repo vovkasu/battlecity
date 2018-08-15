@@ -306,7 +306,7 @@ MonoBehaviour:
     BulletPosition: {fileID: 0}
     BulletZRotation: 0
     BulletColliderSize: {x: 0, y: 0}
-  Speed: 2
+  Speed: 1.5
   BulletSpeed: 0
   CurrentBullet: {fileID: 0}
   BulletPrefab: {fileID: 114543720734455248, guid: 1a7252a5fec1e254e94681550e98d660,
@@ -315,6 +315,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   ExplodingAnimator: {fileID: 95140754359623322}
+  StuckCheckingPeriod: 0.2
+  StuckCheckingPath: 0.4
+  FirePeriod: 1
+  Strategies:
+  - {fileID: 11400000, guid: 313ad05d461d8974c83d6ae44727e555, type: 2}
+  - {fileID: 11400000, guid: 83fe5b4107196a8478e79f5bd4ea4cb0, type: 2}
+  - {fileID: 11400000, guid: feb392f698d13004b9ecb32caacf3d14, type: 2}
+  StrategyIndex: 0
 --- !u!212 &212243064275296172
 SpriteRenderer:
   m_ObjectHideFlags: 1

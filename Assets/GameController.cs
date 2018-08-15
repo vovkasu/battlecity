@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour
+public class GameController : MonoBehaviour, IPlayerProvider, IEagleProvider
 {
     public Transform PlayerSpawnPosition;
     public TankController TankControllerPrefab;
@@ -12,19 +12,20 @@ public class GameController : MonoBehaviour
     public EnemyFactory EnemyFactory;
 
     public LevelModel Level;
+    private TankController _tankController;
 
     private void Start()
     {
-        var tankController = Instantiate(TankControllerPrefab, GameRooTransform);
-        tankController.transform.position = PlayerSpawnPosition.position;
+        _tankController = Instantiate(TankControllerPrefab, GameRooTransform);
+        _tankController.transform.position = PlayerSpawnPosition.position;
 
         Eagle.OnDie -= GameOver;
-        tankController.OnExplosion -= GameOver;
+        _tankController.OnExplosion -= GameOver;
 
         Eagle.OnDie += GameOver;
-        tankController.OnExplosion += GameOver;
+        _tankController.OnExplosion += GameOver;
 
-        EnemyFactory.Run(Level);
+        EnemyFactory.Run(Level, this, this);
     }
 
     private void GameOver(object sender, EventArgs eventArgs)
@@ -38,4 +39,24 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public TankController GetPlayer()
+    {
+        return _tankController;
+    }
+
+    public Eagle GetEagle()
+    {
+        return Eagle;
+    }
+}
+
+public interface IEagleProvider
+{
+    Eagle GetEagle();
+}
+
+public interface IPlayerProvider
+{
+    TankController GetPlayer();
 }

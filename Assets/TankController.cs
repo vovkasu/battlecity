@@ -60,7 +60,7 @@ public class TankController : MonoBehaviour
 	    }
     }
 
-    private Bullet Fire()
+    protected Bullet Fire()
     {
         var bullet = Instantiate(BulletPrefab, transform.parent);
         bullet.Fire(LastDirection, 1);
