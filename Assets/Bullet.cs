@@ -11,8 +11,9 @@ public class Bullet : MonoBehaviour
     public BoxCollider2D BoxCollider2D;
 
 
-    public void Fire(DirectionParams direction, int power)
+    public void Fire(DirectionParams direction, int power, float speed)
     {
+        Speed = speed;
         NeedMove = true;
         MoveDirection = direction.MoveDirection;
         View.transform.eulerAngles = new Vector3(0, 0, direction.BulletZRotation);

@@ -314,6 +314,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   ExplodingAnimator: {fileID: 95140754359623322}
+  BulletSpeed: 3
 --- !u!212 &212243064275296172
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -286,6 +286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   View: {fileID: 67641955}
+  ExploderMask:
+    serializedVersion: 2
+    m_Bits: 2304
   DieView: {fileID: 21300000, guid: 9ffc072c8893888418cb605e3aae6a59, type: 3}
 --- !u!4 &89932123 stripped
 Transform:

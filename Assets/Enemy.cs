@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
 public class Enemy : TankController
 {
-    public float StuckCheckingPeriod = 0.2f;
-    public float StuckCheckingPath = 0.4f;
     public float FirePeriod = 1f;
 
     public List<ActionsStrategyBase> Strategies = new List<ActionsStrategyBase>();
     public int StrategyIndex;
 
-    private List<DirectionParams> _possibleDirections;
     private DirectionParams _currentDirection;
-    private DateTime _selectDirectionAt;
-    private Vector3 _selectDirectionPosition;
-    private bool _checkOnStuck;
     private bool _inited;
     private TankController _player;
     private Eagle _eagle;
+    public bool IsStuck;
+    private PositionsHistory _positionsHistory;
 
     public void Init(EnemyModel enemyModel)
     {
@@ -33,13 +28,29 @@ public class Enemy : TankController
             directionParams.Sprite = enemyModel.Views.Find(_ => _.Name == directionParams.DirectionName).Sprite;
         }
 
-        _possibleDirections = new List<DirectionParams>(Directions);
-
         InitCurrentStrategy();
         StartCoroutine(TryFire(FirePeriod));
         DelayChangeStrategy();
         _currentDirection = SelectDirection();
         _inited = true;
+
+        _positionsHistory = new PositionsHistory(7);
+        _positionsHistory.AddPosition(transform.position);
+        StartCoroutine(UpdateHistory(0.15f));
+    }
+
+    private IEnumerator UpdateHistory(float period)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(period);
+            _positionsHistory.AddPosition(transform.position);
+
+            if (_positionsHistory.Count() > 5 && _positionsHistory.GetMaxDistance(transform.position) < 0.2f)
+            {
+                IsStuck = true;
+            }
+        }
     }
 
     public void SetPlayerAndEagle(TankController player, Eagle eagle)
@@ -63,6 +74,7 @@ public class Enemy : TankController
         yield return new WaitForSeconds(strategyDuration);
         StrategyIndex++;
         InitCurrentStrategy();
+        DelayChangeStrategy();
     }
 
     private ActionsStrategyBase GetCurrentStrategy()
@@ -72,29 +84,27 @@ public class Enemy : TankController
 
     private DirectionParams SelectDirection()
     {
-        _selectDirectionAt = DateTime.Now;
-        _selectDirectionPosition = transform.position;
-        _checkOnStuck = true;
-        return GetCurrentStrategy().SelectDirection(_possibleDirections, transform);
+        IsStuck = false;
+        var possibleDirections = new List<DirectionParams>(Directions);
+        possibleDirections.Remove(_currentDirection);
+        return GetCurrentStrategy().SelectDirection(possibleDirections, transform);
     }
 
     private IEnumerator TryFire(float firePeriod)
     {
-        yield return new WaitForSeconds(firePeriod);
-        Fire();
+        while (true)
+        {
+            yield return new WaitForSeconds(firePeriod);
+            CurrentBullet = Fire();
+        }
     }
 
     public override void Update()
     {
         if(!_inited) return;
 
-        if (IsStuck())
+        if (IsStuck)
         {
-            _possibleDirections.Remove(_currentDirection);
-            if (_possibleDirections.Count == 0)
-            {
-                _possibleDirections = new List<DirectionParams>(Directions);
-            }
             _currentDirection = SelectDirection();
         }
 
@@ -107,23 +117,5 @@ public class Enemy : TankController
             }
             transform.Translate(_currentDirection.MoveDirection * Speed * Time.deltaTime);
         }
-    }
-
-    private bool IsStuck()
-    {
-        if (!_checkOnStuck) return false;
-
-        if ((DateTime.Now - _selectDirectionAt).TotalSeconds > StuckCheckingPeriod)
-        {
-            if (Vector2.Distance(transform.position, _selectDirectionPosition) < StuckCheckingPath)
-            {
-                return true;
-            }
-
-            _possibleDirections = new List<DirectionParams>(Directions);
-            _checkOnStuck = false;
-        }
-        return false;
-
     }
 }

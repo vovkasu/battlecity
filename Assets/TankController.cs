@@ -11,7 +11,6 @@ public class TankController : MonoBehaviour
     public DirectionParams LastDirection;
 
     public float Speed;
-    public float BulletSpeed;
 
     public Bullet CurrentBullet;
     public Bullet BulletPrefab;
@@ -22,18 +21,18 @@ public class TankController : MonoBehaviour
 
     public event EventHandler OnExplosion;
 
-    // Use this for initialization
+    public float BulletSpeed;
+
     void Start ()
     {
         LastDirection = Directions.FirstOrDefault(_ => _.DirectionName == "Up");
     }
 	
-	// Update is called once per frame
     public virtual void Update ()
     {
 	    DirectionParams currentDirection = null;
 
-	    if (Input.GetButtonDown("Fire1") && CurrentBullet == null)
+	    if (Input.GetButtonDown("Fire1"))
 	    {
 	        CurrentBullet = Fire();
 	    }
@@ -62,14 +61,19 @@ public class TankController : MonoBehaviour
 
     protected Bullet Fire()
     {
+        if (CurrentBullet != null)
+        {
+            return CurrentBullet;
+        }
+
         var bullet = Instantiate(BulletPrefab, transform.parent);
-        bullet.Fire(LastDirection, 1);
+        bullet.Fire(LastDirection, 1, BulletSpeed);
         return bullet;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    protected virtual void OnCollisionEnter2D(Collision2D other)
     {
-        if (IsInLayerMask(other.gameObject.layer,ExploderMask.value))
+        if (IsInLayerMask(other.gameObject.layer, ExploderMask.value))
         {
             ExplodingAnimator.enabled = true;
         }
